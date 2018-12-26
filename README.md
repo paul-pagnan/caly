@@ -1,2 +1,2 @@
 # caly
-Why is there no good calendar apps anymore... COMING SOON
+Why are there no good calendar apps anymore... COMING SOON
