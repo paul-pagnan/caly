@@ -1,0 +1,25 @@
+{
+  "extends": "tslint-config-airbnb-base",
+  "rulesDirectory": [],
+  "rules": {
+    "ter-max-len": {
+      "severity": "warning",
+      "options": [
+        140,
+        {
+          "ignoreStrings": true
+        }
+      ]
+    },
+    "ter-indent": {
+      "options": [2]
+    },
+    "variable-name": false,
+    "ter-arrow-body-style": false,
+    "no-shadowed-variable": false,
+    "no-magic-numbers": false,
+    "no-empty": false,
+    "no-buffer-constructor": true,
+    "no-console": false
+  }
+}

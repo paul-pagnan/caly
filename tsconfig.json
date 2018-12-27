@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "allowJs": true,
+    "lib": ["es2016", "es6", "dom"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "typeRoots": ["node_modules/@types"],
+    "removeComments": false
+  },
+  "include": ["app/**/*", "test/**/*", "internals/**/*", "*.ts"]
+}

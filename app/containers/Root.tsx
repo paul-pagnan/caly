@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import Routes from '../Routes';
+import { Store } from '../reducers/types';
+import { History } from 'history';
 
-export default class Root extends Component {
+interface Props {
+  store: Store;
+  history: History;
+}
+
+export default class Root extends Component<Props> {
   render() {
     const { store, history } = this.props;
     return (

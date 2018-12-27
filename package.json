@@ -9,11 +9,12 @@
     "build-e2e": "cross-env E2E_BUILD=true yarn build",
     "build-main": "cross-env NODE_ENV=production webpack --config ./configs/webpack.config.main.prod.babel.js --colors",
     "build-renderer": "cross-env NODE_ENV=production webpack --config ./configs/webpack.config.renderer.prod.babel.js --colors",
-    "dev": "cross-env START_HOT=1 node -r @babel/register ./internals/scripts/CheckPortInUse.js && cross-env START_HOT=1 yarn start-renderer-dev",
-    "lint": "cross-env NODE_ENV=development eslint --cache --format=pretty .",
-    "lint-fix": "yarn --silent lint --fix; exit 0",
+    "dev": "cross-env START_HOT=1 node -r @babel/register -r ts-node/register ./internals/scripts/CheckPortInUse.js && cross-env START_HOT=1 yarn start-renderer-dev",
+    "lint": "npm run tslint && npm run eslint && npm run lint-styles",
+    "lint-staged": "lint-staged",
+    "tslint": "cross-env NODE_ENV=development tslint -c ./tslint.json -p tsconfig.json -t stylish",
+    "eslint": "cross-env NODE_ENV=development eslint --cache --format=pretty",
     "lint-styles": "stylelint --ignore-path .eslintignore '**/*.*(css|scss)' --syntax scss",
-    "lint-styles-fix": "yarn --silent lint-styles --fix; exit 0",
     "package": "yarn build && electron-builder build --publish never",
     "package-all": "yarn build && electron-builder build -mwl",
     "package-ci": "yarn postinstall && yarn build && electron-builder --publish always",
@@ -26,17 +27,21 @@
     "preinstall": "node ./internals/scripts/CheckYarn.js",
     "prestart": "yarn build",
     "start": "cross-env NODE_ENV=production electron ./app/main.prod.js",
-    "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r @babel/register ./app/main.dev.js",
+    "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r @babel/register -r ts-node/register ./app/main.dev.ts",
     "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js",
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 jest",
     "test-all": "yarn lint && && yarn build && yarn test && yarn build-e2e && yarn test-e2e",
-    "test-e2e": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.js",
-    "test-e2e-live": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js",
+    "test-e2e": "node -r @babel/register -r ts-node/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.js",
+    "test-e2e-live": "node -r @babel/register -r ts-node/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js",
     "test-watch": "yarn test --watch"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{js,jsx}": [
       "cross-env NODE_ENV=development eslint --cache --format=pretty",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "cross-env NODE_ENV=development tslint -c ./tslint.json -p tsconfig.json -t stylish",
       "git add"
     ],
     "{*.json,.{babelrc,eslintrc,prettierrc,stylelintrc}}": [
@@ -113,9 +118,7 @@
     "email": "paul@pagnan.com.au"
   },
   "license": "MIT",
-  "keywords": [
-
-  ],
+  "keywords": [],
   "jest": {
     "testURL": "http://localhost/",
     "moduleNameMapper": {
@@ -158,7 +161,12 @@
     "@babel/plugin-transform-react-inline-elements": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
     "@babel/register": "^7.0.0",
+    "@types/history": "^4.7.2",
+    "@types/react": "^16.7.18",
+    "@types/react-dom": "^16.0.11",
+    "@types/redux-logger": "^3.0.6",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -184,6 +192,7 @@
     "eslint-formatter-pretty": "^2.0.0",
     "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-plugin-compat": "^2.6.3",
+    "eslint-plugin-flowtype": "^3.2.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-jsx-a11y": "6.1.2",
@@ -217,6 +226,9 @@
     "testcafe-browser-provider-electron": "^0.0.8",
     "testcafe-live": "^0.1.4",
     "testcafe-react-selectors": "^3.0.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.12.0",
+    "tslint-config-airbnb-base": "^0.2.0",
     "url-loader": "^1.1.2",
     "webpack": "^4.28.2",
     "webpack-bundle-analyzer": "^3.0.3",
