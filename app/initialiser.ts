@@ -12,4 +12,9 @@ export class Initialiser {
     // screen will show until this is finished
     await this.calyDb.init();
   }
+
+  async isLoggedIn() {
+    const numProfiles = await this.calyDb.profiles.count();
+    return numProfiles > 0;
+  }
 }

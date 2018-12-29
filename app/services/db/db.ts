@@ -4,8 +4,8 @@ import { TYPES } from '../../inversify/types';
 
 export class CalyDb extends Dexie {
   private initialised = false;
-  private profiles: Dexie.Table<IProfile, number>; // number = type of the primkey
-  private tokens: Dexie.Table<IToken, number>;
+  profiles: Dexie.Table<IProfile, number>; // number = type of the primkey
+  tokens: Dexie.Table<IToken, number>;
 
   // These vars are injected from inversify at the bottom of this class.
   // Couldn't get the constructor decorators working with babel
