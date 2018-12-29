@@ -33,12 +33,12 @@ node_modules
 
 # App packaged
 release
-app/main.prod.js
-app/main.prod.js.map
-app/renderer.prod.js
-app/renderer.prod.js.map
-app/style.css
-app/style.css.map
+dist/main.prod.js
+dist/main.prod.js.map
+dist/renderer.prod.js
+dist/renderer.prod.js.map
+dist/style.css
+dist/style.css.map
 dist
 dll
 main.js

@@ -26,7 +26,7 @@
     "precommit": "lint-staged",
     "preinstall": "node ./internals/scripts/CheckYarn.js",
     "prestart": "yarn build",
-    "start": "cross-env NODE_ENV=production electron ./app/main.prod.js",
+    "start": "cross-env NODE_ENV=production electron ./dist/main.prod.js",
     "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r @babel/register -r ts-node/register ./app/main.dev.ts",
     "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js",
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 jest",
@@ -58,15 +58,15 @@
       "git add"
     ]
   },
-  "main": "./app/main.prod.js",
+  "main": "./dist/main.prod.js",
   "build": {
     "productName": "Caly",
     "appId": "au.com.pagnan.Caly",
     "files": [
       "app/dist/",
       "app/app.html",
-      "app/main.prod.js",
-      "app/main.prod.js.map",
+      "dist/main.prod.js",
+      "dist/main.prod.js.map",
       "package.json"
     ],
     "dmg": {
