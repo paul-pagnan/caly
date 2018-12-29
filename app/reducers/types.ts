@@ -15,4 +15,4 @@ export type GetState = () => ICalyState;
 
 export type Dispatch<T> = ReduxDispatch<Action<T>>;
 
-export type Store<T> = ReduxStore<GetState, Action<T>>;
+export type Store = ReduxStore<GetState, Action<any>>;

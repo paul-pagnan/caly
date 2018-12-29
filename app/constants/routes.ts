@@ -1,4 +1,5 @@
 export default {
-  LOGIN: '/',
+  LOGIN: '/login',
   CALENDAR: '/calendar',
+  SPLASH: '/',
 };

@@ -10,14 +10,14 @@ interface Props {
 const component = ({ loading, onClick }: Props) => {
   if (loading) {
     return (
-      <a href='#' className={[styles.googleLogin, styles.disabled].join(' ')}>
+      <a className={[styles.googleLogin, styles.disabled].join(' ')}>
         Signing in...
       </a>
     );
   }
 
   return (
-    <a href='#' onClick={onClick} className={styles.googleLogin}>
+    <a onClick={onClick} className={styles.googleLogin}>
       <img src={GoogleLogo} alt='Google logo' />
       Sign in with Google
     </a>

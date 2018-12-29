@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CalendarView from './CalendarView';
-import { ICalyState } from 'app/reducers/types';
+import { ICalyState } from '../../reducers/types';
 
 function mapStateToProps(state: ICalyState) {
   return {

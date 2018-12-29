@@ -3,10 +3,10 @@ import { Dispatch } from '../reducers/types';
 import { container } from '../inversify/config';
 import { TYPES } from '../inversify/types';
 import { GoogleAuth } from '../services/google/auth';
-import { IProfileResponse } from 'app/services/google/service/interfaces/google';
+import { IProfile } from '../services/db/db';
 
 export function googleOAuthLogin(
-  onSuccess: (profile: IProfileResponse) => void,
+  onSuccess: (profile: IProfile) => void,
   onError?: (err: Error) => void,
 ) {
   return async (dispatch: Dispatch<ILoginPayload>) => {

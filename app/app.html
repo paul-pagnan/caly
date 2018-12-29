@@ -20,7 +20,7 @@
     <script>
       {
         const scripts = [];
-
+        require('dexie');
         // Dynamically insert the DLL script in development env in the
         // renderer process
         if (process.env.NODE_ENV === 'development') {

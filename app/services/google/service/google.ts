@@ -1,6 +1,6 @@
 import { IGoogleService, IProfileResponse, ITokenResponse } from './interfaces/google';
 import axios from 'axios';
-import qs from 'qs';
+import * as qs from 'qs';
 import Config from '../../../constants/config';
 import { injectable } from 'inversify';
 

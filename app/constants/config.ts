@@ -15,4 +15,5 @@ export default {
       'https://www.googleapis.com/auth/calendar.settings.readonly',
     ],
   },
+  DbName: 'CalyDb',
 };

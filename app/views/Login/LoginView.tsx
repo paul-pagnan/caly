@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import styles from './LoginView.scss';
 import { googleOAuthLogin } from '../../actions/loginActions';
 import GoogleLoginButton from '../../components/GoogleLoginButton';
+import { push } from 'connected-react-router';
 
 interface Props {
   startLogin: typeof googleOAuthLogin;
+  push: typeof push;
   loading: boolean;
 }
 
 export default class LoginView extends Component<Props> {
   initiateGoogleLogin() {
-    this.props.startLogin((profile) => {
-      console.log('GOT THE PROFILE IN THE COMPONENT');
-      console.log(profile);
+    this.props.startLogin(() => {
+      this.props.push('/calendar');
     });
   }
   render() {
