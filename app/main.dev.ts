@@ -13,6 +13,7 @@ import { app, BrowserWindow } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
+import Config from './constants/config';
 
 export default class AppUpdater {
   constructor() {
@@ -70,6 +71,7 @@ app.on('ready', async () => {
     show: false,
     width: 1024,
     height: 728,
+    title: Config.AppName,
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);

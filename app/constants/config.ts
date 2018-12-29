@@ -16,4 +16,5 @@ export default {
     ],
   },
   DbName: 'CalyDb',
+  AppName: 'Caly',
 };

@@ -1,0 +1,11 @@
+@import '../../styles/variables.scss';
+
+.sidebar {
+  height: 100%;
+  width: $sidebar-width;
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  box-shadow: $box-shadow-props;
+  padding: 0 15px;
+}
