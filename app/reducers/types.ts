@@ -1,15 +1,18 @@
 import { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux';
+import { ILoginReducer } from './login';
 
 export interface ICalyState {
-  counter: number;
+  // The reducers go here
+  login: ILoginReducer;
 }
 
-export interface Action {
+export interface Action<T> {
   type: string;
+  payload?: T;
 }
 
 export type GetState = () => ICalyState;
 
-export type Dispatch = ReduxDispatch<Action>;
+export type Dispatch<T> = ReduxDispatch<Action<T>>;
 
-export type Store = ReduxStore<GetState, Action>;
+export type Store<T> = ReduxStore<GetState, Action<T>>;

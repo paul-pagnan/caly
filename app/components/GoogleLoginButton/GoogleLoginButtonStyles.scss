@@ -1,0 +1,28 @@
+@import '../../styles/variables.scss';
+
+.googleLogin {
+  width: 250px;
+  padding: 15px;
+  border: 2px solid $grey-light;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: $typography;
+  transition: 0.2s ease;
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  &:not(.disabled):hover {
+    border-color: $blue;
+  }
+
+  &.disabled {
+    cursor: default;
+  }
+}

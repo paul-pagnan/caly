@@ -7,11 +7,13 @@
     "baseUrl": ".",
     "allowJs": true,
     "lib": ["es2016", "es6", "dom"],
+    "types": ["reflect-metadata"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "sourceMap": true,
     "typeRoots": ["node_modules/@types"],
-    "removeComments": false
+    "removeComments": false,
+    "jsx": "react"
   },
   "include": ["app/**/*", "test/**/*", "internals/**/*", "*.ts"]
 }
